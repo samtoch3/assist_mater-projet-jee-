@@ -1,0 +1,12 @@
+assist_mater\commun\exception\ExceptionValidation.class
+assist_mater\commun\service\IServicePersonne.class
+assist_mater\commun\service\IServiceConnexion.class
+assist_mater\commun\dto\DtoCompte.class
+assist_mater\commun\service\IServiceCategorie.class
+assist_mater\commun\dto\DtoPersonne.class
+assist_mater\commun\dto\Roles.class
+assist_mater\commun\service\IServiceCompte.class
+assist_mater\commun\exception\ExceptionAnomaly.class
+assist_mater\commun\dto\DtoTelephone.class
+assist_mater\commun\dto\DtoCategorie.class
+assist_mater\commun\exception\ExceptionPermission.class

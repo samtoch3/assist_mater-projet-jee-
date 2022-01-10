@@ -1,0 +1,42 @@
+/subsystem=elytron/jdbc-realm=realm-assist_mater:add( \
+	principal-query=[{ \
+		sql="SELECT c.MotDePasse, r.role FROM compte c INNER JOIN role r ON c.IdCompte = r.IdCompte WHERE c.Pseudo = ?", \
+		data-source=assist_mater, \
+		clear-password-mapper={password-index=1}, \
+		attribute-mapping=[{index=2,to=groups}] \
+	}] \
+)
+
+/subsystem=elytron/security-domain=domain-assist_mater:add( \
+	default-realm=realm-assist_mater, \
+	realms=[{realm=realm-assist_mater, \
+	role-decoder=groups-to-roles}], \
+	permission-mapper=default-permission-mapper \
+)
+
+/subsystem=elytron/sasl-authentication-factory=factory-assist_mater:add( \
+	sasl-server-factory=configured, \
+	security-domain=domain-assist_mater, \
+	mechanism-configurations=[{ \
+		mechanism-name=DIGEST-MD5, \
+		mechanism-realm-configurations=[{realm-name=realm-assist_mater}] \
+	}] \
+)
+
+/subsystem=remoting/http-connector=http-remoting-connector:write-attribute( \
+	name=sasl-authentication-factory, \
+	value=factory-assist_mater \
+)
+
+/subsystem=ejb3/application-security-domain=secu-ejb-assist_mater:add( \
+	security-domain=domain-assist_mater \
+)
+
+/subsystem=undertow/application-security-domain=secu-web-assist_mater:add( \
+	security-domain=domain-assist_mater \
+)
+
+reload
+
+echo
+echo Traitement OK
