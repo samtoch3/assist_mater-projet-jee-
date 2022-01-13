@@ -9,18 +9,18 @@ public final class Roles {
 	
 	// Champs statiques
 	
-	public static final String ADMINISTRATEUR	= "ADMINISTRATEUR";
-	public static final String UTILISATEUR		= "UTILISATEUR";
+	public static final String NOUNOU	= "NOUNOU";
+	public static final String PARENT		= "PARENT";
 	
 	
 	private static final List<String>	roles = Collections.unmodifiableList( Arrays.asList( 
-			ADMINISTRATEUR,			
-			UTILISATEUR
+			NOUNOU,			
+			PARENT
 	) );
 
 	private static final String[]	 	libellés = new String[] {
-			"Administrateur",
-			"Utilisateur",
+			"Nounou",
+			"Parent",
 	};
 	
 	

@@ -52,7 +52,7 @@ public class Contrat implements Serializable {
 	@Min(value = 0, message = "Le prix ne doit pas etre inférieur a 0 ")
 	private BigDecimal indemn_repas;
 	
-	private Userr parent;
+	private User parent;
 	
 	
 
@@ -62,7 +62,7 @@ public class Contrat implements Serializable {
 	}
 
 	public Contrat(Integer id_contrat, String lastname, String firstname, Date date_naiss, Date date_deb, Date date_fin,
-			BigDecimal tarif_horaire,Userr parent ) {
+			BigDecimal tarif_horaire,User parent ) {
 		super();
 		this.id_contrat = id_contrat;
 		this.lastname = lastname;
@@ -133,11 +133,11 @@ public class Contrat implements Serializable {
 		this.tarif_horaire = tarif_horaire;
 	}
 
-	public Userr getParent() {
+	public User getParent() {
 		return parent;
 	}
 
-	public void setParent(Userr parent) {
+	public void setParent(User parent) {
 		this.parent = parent;
 	}
 	

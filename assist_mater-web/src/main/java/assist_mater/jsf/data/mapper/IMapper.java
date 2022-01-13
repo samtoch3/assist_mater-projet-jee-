@@ -8,7 +8,7 @@ import assist_mater.commun.dto.DtoGarde;
 import assist_mater.commun.dto.DtoUser;
 import assist_mater.jsf.data.Contrat;
 import assist_mater.jsf.data.Garde;
-import assist_mater.jsf.data.Userr;
+import assist_mater.jsf.data.User;
 
 
 @Mapper( componentModel = "cdi" )
@@ -17,13 +17,13 @@ public interface IMapper {
 
 	// Userr
 	
-	Userr    map( DtoUser source );
+	User    map( DtoUser source );
 	
-	DtoUser map( Userr source );
+	DtoUser map( User source );
 	
-	Userr duplicate( Userr source );
+	User duplicate( User source );
 
-	Userr update( @MappingTarget Userr target, Userr source );
+	User update( @MappingTarget User target, User source );
 
 
 	// Contrat

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import assist_mater.commun.dto.DtoUser;
 import assist_mater.commun.service.IServiceConnexion;
-import assist_mater.jsf.data.Userr;
+import assist_mater.jsf.data.User;
 
 import assist_mater.jsf.util.UtilJsf;
 
@@ -22,10 +22,10 @@ public class ModelConnexion {
 
 	// Champs
 
-	private Userr			courant;
+	private User			courant;
 
 	@Inject
-	private Userr		UserrActif;
+	private User		UserrActif;
 	@Inject
 	private ModelInfo		modelInfo;
 	@EJB
@@ -34,9 +34,9 @@ public class ModelConnexion {
 
 	// Getters 
 	
-	public Userr getCourant() {
+	public User getCourant() {
 		if ( courant == null ) {
-			courant = new Userr();
+			courant = new User();
 		}
 		return courant;
 	}

@@ -1,7 +1,7 @@
 package assist_mater.ejb.service.standard;
 
-import static assist_mater.commun.dto.Roles.ADMINISTRATEUR;
-import static assist_mater.commun.dto.Roles.UTILISATEUR;
+import static assist_mater.commun.dto.Roles.NOUNOU;
+import static assist_mater.commun.dto.Roles.PARENT;
 import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
 
 import java.util.ArrayList;
@@ -13,94 +13,82 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
 
-import assist_mater.commun.dto.DtoPersonne;
-import assist_mater.commun.dto.DtoTelephone;
+import assist_mater.commun.dto.DtoContrat;
 import assist_mater.commun.exception.ExceptionValidation;
-import assist_mater.commun.service.IServicePersonne;
+import assist_mater.commun.service.IServiceContrat;
 import assist_mater.ejb.dao.IDaoContrat;
 import assist_mater.ejb.data.Contrat;
 import assist_mater.ejb.data.mapper.IMapperEjb;
 
 @Stateless
 @Remote
-@RolesAllowed({ ADMINISTRATEUR, UTILISATEUR })
-public class ServiceContrat implements IServicePersonne {
+@RolesAllowed({ NOUNOU, PARENT })
+public class ServiceContrat implements IServiceContrat {
 
 	// Champs
 	@Inject
 	private IMapperEjb mapper;
 	@Inject
-	private IDaoContrat daoPersonne;
+	private IDaoContrat daoContrat;
 
 	// Actions
 
 	@Override
-	public int inserer(DtoPersonne dtoPersonne) throws ExceptionValidation {
-		verifierValiditeDonnees(dtoPersonne);
-		int id = daoPersonne.inserer(mapper.map(dtoPersonne));
+	public int inserer(DtoContrat dtoContrat) throws ExceptionValidation {
+		verifierValiditeDonnees(dtoContrat);
+		int id = daoContrat.inserer(mapper.map(dtoContrat));
 		return id;
 	}
 
 	@Override
-	public void modifier(DtoPersonne dtoPersonne) throws ExceptionValidation {
-		verifierValiditeDonnees(dtoPersonne);
-		daoPersonne.modifier(mapper.map(dtoPersonne));
+	public void modifier(DtoContrat dtoContrat) throws ExceptionValidation {
+		verifierValiditeDonnees(dtoContrat);
+		daoContrat.modifier(mapper.map(dtoContrat));
 	}
 
 	@Override
-	public void supprimer(int idPersonne) throws ExceptionValidation {
-		daoPersonne.supprimer(idPersonne);
+	public void supprimer(int idContrat) throws ExceptionValidation {
+		daoContrat.supprimer(idContrat);
 	}
 
 	@Override
 	@TransactionAttribute(NOT_SUPPORTED)
-	public DtoPersonne retrouver(int idPersonne) {
-		Contrat personne = daoPersonne.retrouver(idPersonne);
+	public DtoContrat retrouver(int idContrat) {
+		Contrat personne = daoContrat.retrouver(idContrat);
 		return mapper.map(personne);
 
 	}
 
 	@Override
 	@TransactionAttribute(NOT_SUPPORTED)
-	public List<DtoPersonne> listerTout() {
-		List<DtoPersonne> liste = new ArrayList<>();
-		for (Contrat personne : daoPersonne.listerTout()) {
-			liste.add( mapper.mapMinimal(personne) );
+	public List<DtoContrat> listerTout() {
+		List<DtoContrat> liste = new ArrayList<>();
+		for (Contrat c : daoContrat.listerTout()) {
+			liste.add( mapper.mapMinimal(c) );
 		}
 		return liste;
 	}
 
 	// Méthodes auxiliaires
 
-	private void verifierValiditeDonnees(DtoPersonne dtoPersonne) throws ExceptionValidation {
+	private void verifierValiditeDonnees(DtoContrat dtoContrat) throws ExceptionValidation {
 
 		StringBuilder message = new StringBuilder();
 
-		if (dtoPersonne.getNom() == null || dtoPersonne.getNom().isEmpty()) {
+		if (dtoContrat.getLastname() == null || dtoContrat.getLastname().isEmpty()) {
 			message.append("\nLe nom est absent.");
-		} else if (dtoPersonne.getNom().length() > 25) {
+		} else if (dtoContrat.getLastname().length() > 25) {
 			message.append("\nLe nom est trop long.");
 		}
 
-		if (dtoPersonne.getPrenom() == null || dtoPersonne.getPrenom().isEmpty()) {
+		if (dtoContrat.getFirstname() == null || dtoContrat.getFirstname().isEmpty()) {
 			message.append("\nLe prénom est absent.");
-		} else if (dtoPersonne.getPrenom().length() > 25) {
+		} else if (dtoContrat.getFirstname().length() > 25) {
 			message.append("\nLe prénom est trop long.");
 		}
 
-		for (DtoTelephone telephoe : dtoPersonne.getTelephones()) {
-			if (telephoe.getLibelle() == null || telephoe.getLibelle().isEmpty()) {
-				message.append("\nLlibellé absent pour le téléphone : " + telephoe.getNumero());
-			} else if (telephoe.getLibelle().length() > 25) {
-				message.append("\nLe libellé du téléphone est trop long : " + telephoe.getLibelle());
-			}
-
-			if (telephoe.getNumero() == null || telephoe.getNumero().isEmpty()) {
-				message.append("\nNuméro absent pour le téléphone : " + telephoe.getLibelle());
-			} else if (telephoe.getNumero().length() > 25) {
-				message.append("\nLe numéro du téléphone est trop long : " + telephoe.getNumero());
-			}
-		}
+		//TO DO
+		//Ajouter la validité sur les autres champs
 
 		if (message.length() > 0) {
 			throw new ExceptionValidation(message.toString().substring(1));

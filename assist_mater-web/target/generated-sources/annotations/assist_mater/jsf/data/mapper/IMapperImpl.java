@@ -5,7 +5,7 @@ import assist_mater.commun.dto.DtoGarde;
 import assist_mater.commun.dto.DtoUser;
 import assist_mater.jsf.data.Contrat;
 import assist_mater.jsf.data.Garde;
-import assist_mater.jsf.data.Userr;
+import assist_mater.jsf.data.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -13,37 +13,37 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-01-13T15:49:26+0100",
+    date = "2022-01-13T21:11:18+0100",
     comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1300.v20210419-1022, environment: Java 15.0.2 (Oracle Corporation)"
 )
 @ApplicationScoped
 public class IMapperImpl implements IMapper {
 
     @Override
-    public Userr map(DtoUser source) {
+    public User map(DtoUser source) {
         if ( source == null ) {
             return null;
         }
 
-        Userr userr = new Userr();
+        User user = new User();
 
-        userr.setId_user( source.getId_user() );
-        userr.setLastname( source.getLastname() );
-        userr.setFirstname( source.getFirstname() );
-        userr.setLogin( source.getLogin() );
-        userr.setPassword( source.getPassword() );
-        userr.setAdress( source.getAdress() );
+        user.setId_user( source.getId_user() );
+        user.setLastname( source.getLastname() );
+        user.setFirstname( source.getFirstname() );
+        user.setLogin( source.getLogin() );
+        user.setPassword( source.getPassword() );
+        user.setAdress( source.getAdress() );
         List<String> list = source.getRoles();
         if ( list != null ) {
-            userr.setRoles( new ArrayList<String>( list ) );
+            user.setRoles( new ArrayList<String>( list ) );
         }
-        userr.setNumero( source.getNumero() );
+        user.setNumero( source.getNumero() );
 
-        return userr;
+        return user;
     }
 
     @Override
-    public DtoUser map(Userr source) {
+    public DtoUser map(User source) {
         if ( source == null ) {
             return null;
         }
@@ -66,30 +66,30 @@ public class IMapperImpl implements IMapper {
     }
 
     @Override
-    public Userr duplicate(Userr source) {
+    public User duplicate(User source) {
         if ( source == null ) {
             return null;
         }
 
-        Userr userr = new Userr();
+        User user = new User();
 
-        userr.setId_user( source.getId_user() );
-        userr.setLastname( source.getLastname() );
-        userr.setFirstname( source.getFirstname() );
-        userr.setLogin( source.getLogin() );
-        userr.setPassword( source.getPassword() );
-        userr.setAdress( source.getAdress() );
+        user.setId_user( source.getId_user() );
+        user.setLastname( source.getLastname() );
+        user.setFirstname( source.getFirstname() );
+        user.setLogin( source.getLogin() );
+        user.setPassword( source.getPassword() );
+        user.setAdress( source.getAdress() );
         List<String> list = source.getRoles();
         if ( list != null ) {
-            userr.setRoles( new ArrayList<String>( list ) );
+            user.setRoles( new ArrayList<String>( list ) );
         }
-        userr.setNumero( source.getNumero() );
+        user.setNumero( source.getNumero() );
 
-        return userr;
+        return user;
     }
 
     @Override
-    public Userr update(Userr target, Userr source) {
+    public User update(User target, User source) {
         if ( source == null ) {
             return null;
         }
@@ -187,10 +187,10 @@ public class IMapperImpl implements IMapper {
 
         Garde garde = new Garde();
 
-        garde.setId_garde( source.getId_garde() );
         garde.setDate_garde( source.getDate_garde() );
         garde.setHeure_deb( source.getHeure_deb() );
         garde.setHeure_fin( source.getHeure_fin() );
+        garde.setId_garde( source.getId_garde() );
         garde.setRepasPris( source.isRepasPris() );
 
         return garde;
@@ -221,10 +221,10 @@ public class IMapperImpl implements IMapper {
 
         Garde garde = new Garde();
 
-        garde.setId_garde( source.getId_garde() );
         garde.setDate_garde( source.getDate_garde() );
         garde.setHeure_deb( source.getHeure_deb() );
         garde.setHeure_fin( source.getHeure_fin() );
+        garde.setId_garde( source.getId_garde() );
         garde.setRepasPris( source.isRepasPris() );
 
         return garde;

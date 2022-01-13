@@ -1,7 +1,7 @@
 package assist_mater.ejb.service.standard;
 
-import static assist_mater.commun.dto.Roles.ADMINISTRATEUR;
-import static assist_mater.commun.dto.Roles.UTILISATEUR;
+import static assist_mater.commun.dto.Roles.NOUNOU;
+import static assist_mater.commun.dto.Roles.PARENT;
 import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
 
 import java.util.ArrayList;
@@ -13,9 +13,9 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
 
-import assist_mater.commun.dto.DtoCategorie;
+import assist_mater.commun.dto.DtoGarde;
 import assist_mater.commun.exception.ExceptionValidation;
-import assist_mater.commun.service.IServiceCategorie;
+import assist_mater.commun.service.IServiceGarde;
 import assist_mater.ejb.dao.IDaoGarde;
 import assist_mater.ejb.dao.IDaoContrat;
 import assist_mater.ejb.data.Garde;
@@ -23,53 +23,53 @@ import assist_mater.ejb.data.mapper.IMapperEjb;
 
 @Stateless
 @Remote
-@RolesAllowed(ADMINISTRATEUR)
-public class ServiceGarde implements IServiceCategorie {
+@RolesAllowed(NOUNOU)
+public class ServiceGarde implements IServiceGarde {
 
 	// Champs
 	@Inject
 	private IMapperEjb mapper;
 	@Inject
-	private IDaoGarde daoCategorie;
+	private IDaoGarde daoGarde;
 	@Inject
-	private IDaoContrat daoPersonne;
+	private IDaoContrat daoContrat;
 
 	// Actions
 
 	@Override
-	public int inserer(DtoCategorie dtoCategorie) throws ExceptionValidation {
-		verifierValiditeDonnees(dtoCategorie);
-		int id = daoCategorie.inserer(mapper.map(dtoCategorie));
+	public int inserer(DtoGarde dtoGarde) throws ExceptionValidation {
+		verifierValiditeDonnees(dtoGarde);
+		int id = daoGarde.inserer(mapper.map(dtoGarde));
 		return id;
 	}
 
 	@Override
-	public void modifier(DtoCategorie dtoCategorie) throws ExceptionValidation {
-		verifierValiditeDonnees(dtoCategorie);
-		daoCategorie.modifier(mapper.map(dtoCategorie));
+	public void modifier(DtoGarde dtoGarde) throws ExceptionValidation {
+		verifierValiditeDonnees(dtoGarde);
+		daoGarde.modifier(mapper.map(dtoGarde));
 	}
 
 	@Override
-	public void supprimer(int idCategorie) throws ExceptionValidation {
-		if (daoPersonne.compterPourCategorie(idCategorie) != 0) {
-			throw new ExceptionValidation("La catégorie n'est pas vide");
+	public void supprimer(int idGarde) throws ExceptionValidation {
+		/*if (daoContrat.compterPourGarde(idGarde) != 0) {
+			throw new ExceptionValidation("La garde n'est pas vide");
 		}
-		daoCategorie.supprimer(idCategorie);
+		daoGarde.supprimer(idGarde);*/
 	}
 
 	@Override
-	@RolesAllowed({ ADMINISTRATEUR, UTILISATEUR })
+	@RolesAllowed({ NOUNOU, PARENT })
 	@TransactionAttribute(NOT_SUPPORTED)
-	public DtoCategorie retrouver(int idCategorie) {
-		return mapper.map(daoCategorie.retrouver(idCategorie));
+	public DtoGarde retrouver(int idGarde) {
+		return mapper.map(daoGarde.retrouver(idGarde));
 	}
 
 	@Override
-	@RolesAllowed({ ADMINISTRATEUR, UTILISATEUR })
+	@RolesAllowed({ NOUNOU, PARENT })
 	@TransactionAttribute(NOT_SUPPORTED)
-	public List<DtoCategorie> listerTout() {
-		List<DtoCategorie> liste = new ArrayList<>();
-		for (Garde categorie : daoCategorie.listerTout()) {
+	public List<DtoGarde> listerTout() {
+		List<DtoGarde> liste = new ArrayList<>();
+		for (Garde categorie : daoGarde.listerTout()) {
 			liste.add(mapper.map(categorie));
 		}
 		return liste;
@@ -77,18 +77,21 @@ public class ServiceGarde implements IServiceCategorie {
 
 	// Méthodes auxiliaires
 
-	private void verifierValiditeDonnees(DtoCategorie dtoCategorie) throws ExceptionValidation {
+	private void verifierValiditeDonnees(DtoGarde dtoGarde) throws ExceptionValidation {
 
 		StringBuilder message = new StringBuilder();
 
-		if (dtoCategorie.getLibelle() == null || dtoCategorie.getLibelle().isEmpty()) {
+		/*if (dtoGarde.getLibelle() == null || dtoGarde.getLibelle().isEmpty()) {
 			message.append("\nLe libellé est absent.");
-		} else if (dtoCategorie.getLibelle().length() < 3) {
+		} else if (dtoGarde.getLibelle().length() < 3) {
 			message.append("\nLe libellé est trop court.");
-		} else if (dtoCategorie.getLibelle().length() > 25) {
+		} else if (dtoGarde.getLibelle().length() > 25) {
 			message.append("\nLe libellé est trop long.");
-		}
+		}*/
 
+		//TO DO
+		//Ajouter la validité sur les autres champs
+		
 		if (message.length() > 0) {
 			throw new ExceptionValidation(message.toString().substring(1));
 		}

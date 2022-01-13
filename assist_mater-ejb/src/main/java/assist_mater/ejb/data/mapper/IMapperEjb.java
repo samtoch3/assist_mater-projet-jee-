@@ -39,8 +39,8 @@ public interface IMapperEjb {
 	
 	DtoContrat map( Contrat source );
 
-	@Mapping( target="categorie", ignore = true )
-	@Mapping( target="telephones", ignore = true )
+	/*@Mapping( target="categorie", ignore = true )
+	@Mapping( target="telephones", ignore = true )*/
 	DtoContrat mapMinimal( Contrat source );
 		
 	

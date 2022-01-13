@@ -12,7 +12,7 @@ import javax.inject.Named;
 import assist_mater.commun.dto.DtoUser;
 import assist_mater.commun.exception.ExceptionValidation;
 import assist_mater.commun.service.IServiceUser;
-import assist_mater.jsf.data.Userr;
+import assist_mater.jsf.data.User;
 import assist_mater.jsf.data.mapper.IMapper;
 import assist_mater.jsf.util.UtilJsf;
 
@@ -25,9 +25,9 @@ public class ModelUser implements Serializable {
 	
 	// Champs
 	
-	private List<Userr>	liste;
+	private List<User>	liste;
 	
-	private Userr			courant;
+	private User			courant;
 	
 	@EJB
 	private IServiceUser	serviceUserr;
@@ -38,7 +38,7 @@ public class ModelUser implements Serializable {
 	
 	// Getters 
 	
-	public List<Userr> getListe() {
+	public List<User> getListe() {
 		if ( liste == null ) {
 			liste = new ArrayList<>();
 			for ( DtoUser dto : serviceUserr.listerTout() ) {
@@ -48,9 +48,9 @@ public class ModelUser implements Serializable {
 		return liste;
 	}
 	
-		public Userr getCourant() {
+		public User getCourant() {
 			if ( courant == null ) {
-				courant = new Userr();
+				courant = new User();
 			}
 			return courant;
 		}
@@ -62,7 +62,7 @@ public class ModelUser implements Serializable {
 		if ( courant != null ) {
 			DtoUser dto = serviceUserr.retrouver( courant.getId_user() ); 
 			if ( dto == null ) {
-				UtilJsf.messageError( "Le Userr demandé n'existe pas" );
+				UtilJsf.messageError( "L'utilisateur demandé n'existe pas" );
 				return "test/liste";
 			} else {
 				courant = mapper.map( dto );
@@ -89,7 +89,7 @@ public class ModelUser implements Serializable {
 		}
 	}
 	
-	public String supprimer( Userr item ) {
+	public String supprimer( User item ) {
 		try {
 			serviceUserr.supprimer( item.getId_user() );
 			liste.remove(item);

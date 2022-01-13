@@ -1,6 +1,6 @@
 package assist_mater.ejb.service.standard;
 
-import static assist_mater.commun.dto.Roles.ADMINISTRATEUR;
+import static assist_mater.commun.dto.Roles.NOUNOU;
 import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
 
 import java.util.ArrayList;
@@ -12,55 +12,55 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
 
-import assist_mater.commun.dto.DtoCompte;
+import assist_mater.commun.dto.DtoUser;
 import assist_mater.commun.exception.ExceptionValidation;
-import assist_mater.commun.service.IServiceCompte;
+import assist_mater.commun.service.IServiceUser;
 import assist_mater.ejb.dao.IDaoUser;
 import assist_mater.ejb.data.User;
 import assist_mater.ejb.data.mapper.IMapperEjb;
 
 @Stateless
 @Remote
-@RolesAllowed(ADMINISTRATEUR)
-public class ServiceUser implements IServiceCompte {
+@RolesAllowed(NOUNOU)
+public class ServiceUser implements IServiceUser {
 
 	// Champs
 	@Inject
 	private IMapperEjb mapper;
 	@Inject
-	private IDaoUser daoCompte;
+	private IDaoUser daoUser;
 
 	// Actions
 
 	@Override
-	public int inserer(DtoCompte dtoCompte) throws ExceptionValidation {
-		verifierValiditeDonnees(dtoCompte);
-		int id = daoCompte.inserer(mapper.map(dtoCompte));
+	public int inserer(DtoUser dtoUser) throws ExceptionValidation {
+		verifierValiditeDonnees(dtoUser);
+		int id = daoUser.inserer(mapper.map(dtoUser));
 		return id;
 	}
 
 	@Override
-	public void modifier(DtoCompte dtoCompte) throws ExceptionValidation {
-		verifierValiditeDonnees(dtoCompte);
-		daoCompte.modifier(mapper.map(dtoCompte));
+	public void modifier(DtoUser dtoUser) throws ExceptionValidation {
+		verifierValiditeDonnees(dtoUser);
+		daoUser.modifier(mapper.map(dtoUser));
 	}
 
 	@Override
-	public void supprimer(int idCompte) throws ExceptionValidation {
-		daoCompte.supprimer(idCompte);
-	}
-
-	@Override
-	@TransactionAttribute(NOT_SUPPORTED)
-	public DtoCompte retrouver(int idCompte) {
-		return mapper.map(daoCompte.retrouver(idCompte));
+	public void supprimer(int idUser) throws ExceptionValidation {
+		daoUser.supprimer(idUser);
 	}
 
 	@Override
 	@TransactionAttribute(NOT_SUPPORTED)
-	public List<DtoCompte> listerTout() {
-		List<DtoCompte> liste = new ArrayList<>();
-		for (User compte : daoCompte.listerTout()) {
+	public DtoUser retrouver(int idUser) {
+		return mapper.map(daoUser.retrouver(idUser));
+	}
+
+	@Override
+	@TransactionAttribute(NOT_SUPPORTED)
+	public List<DtoUser> listerTout() {
+		List<DtoUser> liste = new ArrayList<>();
+		for (User compte : daoUser.listerTout()) {
 			liste.add(mapper.map(compte));
 		}
 		return liste;
@@ -68,35 +68,37 @@ public class ServiceUser implements IServiceCompte {
 
 	// Méthodes auxiliaires
 
-	private void verifierValiditeDonnees(DtoCompte dtoCompte) throws ExceptionValidation {
+	private void verifierValiditeDonnees(DtoUser dtoUser) throws ExceptionValidation {
 
 		StringBuilder message = new StringBuilder();
 
-		if (dtoCompte.getPseudo() == null || dtoCompte.getPseudo().isEmpty()) {
+		/*if (dtoUser.getLogin() == null || dtoUser.getLogin().isEmpty()) {
 			message.append("\nLe pseudo est absent.");
-		} else if (dtoCompte.getPseudo().length() < 3) {
+		} else if (dtoUser.getLogin().length() < 3) {
 			message.append("\nLe pseudo est trop court.");
-		} else if (dtoCompte.getPseudo().length() > 25) {
+		} else if (dtoUser.getLogin().length() > 25) {
 			message.append("\nLe pseudo est trop long.");
-		} else if (!daoCompte.verifierUnicitePseudo(dtoCompte.getPseudo(), dtoCompte.getId())) {
-			message.append("\nLe pseudo " + dtoCompte.getPseudo() + " est déjà utilisé.");
-		}
+		} else if (!daoUser.verifierUniciteLogin(dtoUser.getLogin(), dtoUser.getId_user())) {
+			message.append("\nLe pseudo " + dtoUser.getLogin() + " est déjà utilisé.");
+		}*/
 
-		if (dtoCompte.getMotDePasse() == null || dtoCompte.getMotDePasse().isEmpty()) {
+		if (dtoUser.getPassword() == null || dtoUser.getPassword().isEmpty()) {
 			message.append("\nLe mot de passe est absent.");
-		} else if (dtoCompte.getMotDePasse().length() < 3) {
+		} else if (dtoUser.getPassword().length() < 3) {
 			message.append("\nLe mot de passe est trop court.");
-		} else if (dtoCompte.getMotDePasse().length() > 25) {
+		} else if (dtoUser.getPassword().length() > 25) {
 			message.append("\nLe mot de passe est trop long.");
 		}
 
-		if (dtoCompte.getEmail() == null || dtoCompte.getEmail().isEmpty()) {
+		if (dtoUser.getLogin() == null || dtoUser.getLogin().isEmpty()) {
 			message.append("\nL'adresse e-mail est absente.");
+		} else if (!daoUser.verifierUniciteLogin(dtoUser.getLogin(), dtoUser.getId_user())) {
+			message.append("\nL'adresse e-mail " + dtoUser.getLogin() + " est déjà utilisée.");
 		}
 
 		if (message.length() > 0) {
 			throw new ExceptionValidation(message.toString().substring(1));
-		}
+		} 
 	}
 
 }

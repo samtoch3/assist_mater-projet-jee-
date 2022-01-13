@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
 
-import assist_mater.commun.dto.DtoCompte;
+import assist_mater.commun.dto.DtoUser;
 import assist_mater.commun.service.IServiceConnexion;
 import assist_mater.ejb.dao.IDaoUser;
 import assist_mater.ejb.data.mapper.IMapperEjb;
@@ -20,15 +20,15 @@ public class ServiceConnexion implements IServiceConnexion {
 	@Inject
 	private IMapperEjb mapper;
 	@Inject
-	private IDaoUser daoCompte;
+	private IDaoUser daoUser;
 
 	// Actions
 
 	@Override
 	@TransactionAttribute(NOT_SUPPORTED)
-	public DtoCompte sessionUtilisateurOuvrir(String pseudo, String motDePasse) {
-		DtoCompte compte = mapper.map(daoCompte.validerAuthentification(pseudo, motDePasse));
-		return compte;
+	public DtoUser sessionUtilisateurOuvrir(String login, String pass) {
+		DtoUser user = mapper.map(daoUser.validerAuthentification(login, pass));
+		return user;
 	}
 
 	@Override

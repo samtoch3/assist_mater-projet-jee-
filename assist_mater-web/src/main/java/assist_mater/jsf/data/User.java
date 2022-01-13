@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
-public class Userr implements Serializable {
+public class User implements Serializable {
 
 	// Champs
 
@@ -49,10 +49,10 @@ public class Userr implements Serializable {
 	
 	// Constructeurs
 
-	public Userr() {
+	public User() {
 	}
 
-	public Userr(Integer id_user, String lastname, String firstname, String login, String password, String adress,String numero,
+	public User(Integer id_user, String lastname, String firstname, String login, String password, String adress,String numero,
 			List<String> roles) {
 		super();
 		this.id_user = id_user;
@@ -152,7 +152,7 @@ public class Userr implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		var other = (Userr) obj;
+		var other = (User) obj;
 		return Objects.equals(id_user, other.id_user);
 	}
 
