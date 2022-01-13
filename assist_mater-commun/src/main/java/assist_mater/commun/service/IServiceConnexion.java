@@ -1,11 +1,11 @@
 package assist_mater.commun.service;
 
-import assist_mater.commun.dto.DtoCompte;
+import assist_mater.commun.dto.DtoUser;
 
 
 public interface IServiceConnexion {
 
-	DtoCompte	sessionUtilisateurOuvrir( String pseudo, String motDePasse );
+	DtoUser	sessionUtilisateurOuvrir( String login, String password );
 
 	void		sessionUtilisateurFermer();
 

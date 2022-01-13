@@ -8,16 +8,27 @@ import javax.faces.component.UISelectItems;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Named;
-
-import assist_mater.jsf.data.Categorie;
+import assist_mater.jsf.data.Contrat;
 
 @Named
 @RequestScoped
-public class ConverterCategorie implements Converter<Categorie> {
+public class ConverterContrat implements Converter<Contrat> {
+
+	@Override
+	public Contrat getAsObject(FacesContext context, UIComponent component, String value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getAsString(FacesContext context, UIComponent component, Contrat value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	// Actions
 
-	@SuppressWarnings("unchecked")
+	/*@SuppressWarnings("unchecked")
 	@Override
 	public Categorie getAsObject(FacesContext context, UIComponent uic, String value) {
 
@@ -49,5 +60,5 @@ public class ConverterCategorie implements Converter<Categorie> {
 			return "";
 		}
 		return String.valueOf(item.getId());
-	}
+	}*/
 }

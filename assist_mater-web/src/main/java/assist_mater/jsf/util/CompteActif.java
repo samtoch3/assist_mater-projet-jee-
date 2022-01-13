@@ -6,15 +6,16 @@ import static assist_mater.commun.dto.Roles.UTILISATEUR;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import assist_mater.jsf.data.Compte;
+
+import assist_mater.jsf.data.Userr;
 
 @SuppressWarnings("serial")
 @SessionScoped
 @Named
-public class CompteActif extends Compte {
+public class CompteActif extends Userr {
 	
 	public boolean isLoggedIn() {
-		return getPseudo() != null;
+		return getLogin() != null;
 	}	
 	
 	public boolean isUtilisateur() {

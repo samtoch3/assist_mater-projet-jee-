@@ -1,63 +1,59 @@
 package assist_mater.jsf.data.mapper;
 
-import java.util.List;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-import assist_mater.commun.dto.DtoCategorie;
-import assist_mater.commun.dto.DtoCompte;
-import assist_mater.commun.dto.DtoPersonne;
-import assist_mater.commun.dto.DtoTelephone;
-import assist_mater.jsf.data.Categorie;
-import assist_mater.jsf.data.Compte;
-import assist_mater.jsf.data.Personne;
-import assist_mater.jsf.data.Telephone;
+import assist_mater.commun.dto.DtoContrat;
+import assist_mater.commun.dto.DtoGarde;
+import assist_mater.commun.dto.DtoUser;
+import assist_mater.jsf.data.Contrat;
+import assist_mater.jsf.data.Garde;
+import assist_mater.jsf.data.Userr;
 
 
 @Mapper( componentModel = "cdi" )
 public interface IMapper {
   
 
-	// Compte
+	// Userr
 	
-	Compte    map( DtoCompte source );
+	Userr    map( DtoUser source );
 	
-	DtoCompte map( Compte source );
+	DtoUser map( Userr source );
 	
-	Compte duplicate( Compte source );
+	Userr duplicate( Userr source );
 
-	Compte update( @MappingTarget Compte target, Compte source );
+	Userr update( @MappingTarget Userr target, Userr source );
 
 
-	// Categorie
+	// Contrat
 	
-	Categorie    map( DtoCategorie source );
+	Contrat    map( DtoContrat source );
 	
-	DtoCategorie map( Categorie source );
+	DtoContrat map( Contrat source );
 	
-	Categorie duplicate( Categorie source );
+	Contrat duplicate( Contrat source );
 
 	
-	// Personne
+	// Garde
 	
-	Personne    map( DtoPersonne source );
+	Garde    map( DtoGarde source );
 	
-	DtoPersonne map( Personne source );
+	DtoGarde map( Garde source );
 	
-    Personne duplicate( Personne source );
+    Garde duplicate( Garde source );
 
 	
 	// Telephone
 	
-	Telephone    map( DtoTelephone source );
+	/*Telephone    map( DtoTelephone source );
 	
 	DtoTelephone map( Telephone source );
 
-    // Méthodes nécessaire pour update( Personne )
+    // Méthodes nécessaire pour update( Garde )
 
 	Telephone duplicate( Telephone source );
 
-	List<Telephone> duplicate( List<Telephone> source );
+	List<Telephone> duplicate( List<Telephone> source );*/
 
 }

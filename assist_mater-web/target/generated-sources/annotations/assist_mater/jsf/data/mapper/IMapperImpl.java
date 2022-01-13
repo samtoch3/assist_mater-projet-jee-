@@ -1,13 +1,11 @@
 package assist_mater.jsf.data.mapper;
 
-import assist_mater.commun.dto.DtoCategorie;
-import assist_mater.commun.dto.DtoCompte;
-import assist_mater.commun.dto.DtoPersonne;
-import assist_mater.commun.dto.DtoTelephone;
-import assist_mater.jsf.data.Categorie;
-import assist_mater.jsf.data.Compte;
-import assist_mater.jsf.data.Personne;
-import assist_mater.jsf.data.Telephone;
+import assist_mater.commun.dto.DtoContrat;
+import assist_mater.commun.dto.DtoGarde;
+import assist_mater.commun.dto.DtoUser;
+import assist_mater.jsf.data.Contrat;
+import assist_mater.jsf.data.Garde;
+import assist_mater.jsf.data.Userr;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -15,84 +13,94 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-01-13T12:10:50+0100",
+    date = "2022-01-13T15:39:31+0100",
     comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1300.v20210419-1022, environment: Java 15.0.2 (Oracle Corporation)"
 )
 @ApplicationScoped
 public class IMapperImpl implements IMapper {
 
     @Override
-    public Compte map(DtoCompte source) {
+    public Userr map(DtoUser source) {
         if ( source == null ) {
             return null;
         }
 
-        Compte compte = new Compte();
+        Userr userr = new Userr();
 
-        compte.setEmail( source.getEmail() );
-        compte.setId( source.getId() );
-        compte.setMotDePasse( source.getMotDePasse() );
-        compte.setPseudo( source.getPseudo() );
+        userr.setAdress( source.getAdress() );
+        userr.setFirstname( source.getFirstname() );
+        userr.setId_user( source.getId_user() );
+        userr.setLastname( source.getLastname() );
+        userr.setLogin( source.getLogin() );
+        userr.setNumero( source.getNumero() );
+        userr.setPassword( source.getPassword() );
         List<String> list = source.getRoles();
         if ( list != null ) {
-            compte.setRoles( new ArrayList<String>( list ) );
+            userr.setRoles( new ArrayList<String>( list ) );
         }
 
-        return compte;
+        return userr;
     }
 
     @Override
-    public DtoCompte map(Compte source) {
+    public DtoUser map(Userr source) {
         if ( source == null ) {
             return null;
         }
 
-        DtoCompte dtoCompte = new DtoCompte();
+        DtoUser dtoUser = new DtoUser();
 
-        dtoCompte.setEmail( source.getEmail() );
-        if ( source.getId() != null ) {
-            dtoCompte.setId( source.getId() );
-        }
-        dtoCompte.setMotDePasse( source.getMotDePasse() );
-        dtoCompte.setPseudo( source.getPseudo() );
+        dtoUser.setAdress( source.getAdress() );
+        dtoUser.setFirstname( source.getFirstname() );
+        dtoUser.setId_user( source.getId_user() );
+        dtoUser.setLastname( source.getLastname() );
+        dtoUser.setLogin( source.getLogin() );
+        dtoUser.setNumero( source.getNumero() );
+        dtoUser.setPassword( source.getPassword() );
         List<String> list = source.getRoles();
         if ( list != null ) {
-            dtoCompte.setRoles( new ArrayList<String>( list ) );
+            dtoUser.setRoles( new ArrayList<String>( list ) );
         }
 
-        return dtoCompte;
+        return dtoUser;
     }
 
     @Override
-    public Compte duplicate(Compte source) {
+    public Userr duplicate(Userr source) {
         if ( source == null ) {
             return null;
         }
 
-        Compte compte = new Compte();
+        Userr userr = new Userr();
 
-        compte.setEmail( source.getEmail() );
-        compte.setId( source.getId() );
-        compte.setMotDePasse( source.getMotDePasse() );
-        compte.setPseudo( source.getPseudo() );
+        userr.setAdress( source.getAdress() );
+        userr.setFirstname( source.getFirstname() );
+        userr.setId_user( source.getId_user() );
+        userr.setLastname( source.getLastname() );
+        userr.setLogin( source.getLogin() );
+        userr.setNumero( source.getNumero() );
+        userr.setPassword( source.getPassword() );
         List<String> list = source.getRoles();
         if ( list != null ) {
-            compte.setRoles( new ArrayList<String>( list ) );
+            userr.setRoles( new ArrayList<String>( list ) );
         }
 
-        return compte;
+        return userr;
     }
 
     @Override
-    public Compte update(Compte target, Compte source) {
+    public Userr update(Userr target, Userr source) {
         if ( source == null ) {
             return null;
         }
 
-        target.setEmail( source.getEmail() );
-        target.setId( source.getId() );
-        target.setMotDePasse( source.getMotDePasse() );
-        target.setPseudo( source.getPseudo() );
+        target.setAdress( source.getAdress() );
+        target.setFirstname( source.getFirstname() );
+        target.setId_user( source.getId_user() );
+        target.setLastname( source.getLastname() );
+        target.setLogin( source.getLogin() );
+        target.setNumero( source.getNumero() );
+        target.setPassword( source.getPassword() );
         if ( target.getRoles() != null ) {
             List<String> list = source.getRoles();
             if ( list != null ) {
@@ -114,186 +122,111 @@ public class IMapperImpl implements IMapper {
     }
 
     @Override
-    public Categorie map(DtoCategorie source) {
+    public Contrat map(DtoContrat source) {
         if ( source == null ) {
             return null;
         }
 
-        Categorie categorie = new Categorie();
+        Contrat contrat = new Contrat();
 
-        categorie.setId( source.getId() );
-        categorie.setLibelle( source.getLibelle() );
+        contrat.setDate_deb( source.getDate_deb() );
+        contrat.setDate_fin( source.getDate_fin() );
+        contrat.setDate_naiss( source.getDate_naiss() );
+        contrat.setFirstname( source.getFirstname() );
+        contrat.setLastname( source.getLastname() );
+        contrat.setTarif_horaire( source.getTarif_horaire() );
 
-        return categorie;
+        return contrat;
     }
 
     @Override
-    public DtoCategorie map(Categorie source) {
+    public DtoContrat map(Contrat source) {
         if ( source == null ) {
             return null;
         }
 
-        DtoCategorie dtoCategorie = new DtoCategorie();
+        DtoContrat dtoContrat = new DtoContrat();
 
-        if ( source.getId() != null ) {
-            dtoCategorie.setId( source.getId() );
+        dtoContrat.setDate_deb( source.getDate_deb() );
+        dtoContrat.setDate_fin( source.getDate_fin() );
+        dtoContrat.setDate_naiss( source.getDate_naiss() );
+        dtoContrat.setFirstname( source.getFirstname() );
+        if ( source.getId_contrat() != null ) {
+            dtoContrat.setId_contrat( source.getId_contrat() );
         }
-        dtoCategorie.setLibelle( source.getLibelle() );
+        dtoContrat.setLastname( source.getLastname() );
+        dtoContrat.setTarif_horaire( source.getTarif_horaire() );
 
-        return dtoCategorie;
+        return dtoContrat;
     }
 
     @Override
-    public Categorie duplicate(Categorie source) {
+    public Contrat duplicate(Contrat source) {
         if ( source == null ) {
             return null;
         }
 
-        Categorie categorie = new Categorie();
+        Contrat contrat = new Contrat();
 
-        categorie.setId( source.getId() );
-        categorie.setLibelle( source.getLibelle() );
+        contrat.setDate_deb( source.getDate_deb() );
+        contrat.setDate_fin( source.getDate_fin() );
+        contrat.setDate_naiss( source.getDate_naiss() );
+        contrat.setFirstname( source.getFirstname() );
+        contrat.setLastname( source.getLastname() );
+        contrat.setParent( duplicate( source.getParent() ) );
+        contrat.setTarif_horaire( source.getTarif_horaire() );
 
-        return categorie;
+        return contrat;
     }
 
     @Override
-    public Personne map(DtoPersonne source) {
+    public Garde map(DtoGarde source) {
         if ( source == null ) {
             return null;
         }
 
-        Personne personne = new Personne();
+        Garde garde = new Garde();
 
-        personne.setId( source.getId() );
-        personne.setNom( source.getNom() );
-        personne.setPrenom( source.getPrenom() );
-        personne.setCategorie( map( source.getCategorie() ) );
-        personne.setTelephones( dtoTelephoneListToTelephoneList( source.getTelephones() ) );
+        garde.setDate_garde( source.getDate_garde() );
+        garde.setHeure_deb( source.getHeure_deb() );
+        garde.setHeure_fin( source.getHeure_fin() );
+        garde.setId_garde( source.getId_garde() );
+        garde.setRepasPris( source.isRepasPris() );
 
-        return personne;
+        return garde;
     }
 
     @Override
-    public DtoPersonne map(Personne source) {
+    public DtoGarde map(Garde source) {
         if ( source == null ) {
             return null;
         }
 
-        DtoPersonne dtoPersonne = new DtoPersonne();
+        DtoGarde dtoGarde = new DtoGarde();
 
-        dtoPersonne.setCategorie( map( source.getCategorie() ) );
-        if ( source.getId() != null ) {
-            dtoPersonne.setId( source.getId() );
-        }
-        dtoPersonne.setNom( source.getNom() );
-        dtoPersonne.setPrenom( source.getPrenom() );
-        dtoPersonne.setTelephones( telephoneListToDtoTelephoneList( source.getTelephones() ) );
+        dtoGarde.setDate_garde( source.getDate_garde() );
+        dtoGarde.setHeure_deb( source.getHeure_deb() );
+        dtoGarde.setHeure_fin( source.getHeure_fin() );
+        dtoGarde.setId_garde( source.getId_garde() );
+        dtoGarde.setRepasPris( source.isRepasPris() );
 
-        return dtoPersonne;
+        return dtoGarde;
     }
 
     @Override
-    public Personne duplicate(Personne source) {
+    public Garde duplicate(Garde source) {
         if ( source == null ) {
             return null;
         }
 
-        Personne personne = new Personne();
+        Garde garde = new Garde();
 
-        personne.setId( source.getId() );
-        personne.setNom( source.getNom() );
-        personne.setPrenom( source.getPrenom() );
-        personne.setCategorie( duplicate( source.getCategorie() ) );
-        personne.setTelephones( duplicate( source.getTelephones() ) );
+        garde.setDate_garde( source.getDate_garde() );
+        garde.setHeure_deb( source.getHeure_deb() );
+        garde.setHeure_fin( source.getHeure_fin() );
+        garde.setId_garde( source.getId_garde() );
+        garde.setRepasPris( source.isRepasPris() );
 
-        return personne;
-    }
-
-    @Override
-    public Telephone map(DtoTelephone source) {
-        if ( source == null ) {
-            return null;
-        }
-
-        Telephone telephone = new Telephone();
-
-        telephone.setId( source.getId() );
-        telephone.setLibelle( source.getLibelle() );
-        telephone.setNumero( source.getNumero() );
-
-        return telephone;
-    }
-
-    @Override
-    public DtoTelephone map(Telephone source) {
-        if ( source == null ) {
-            return null;
-        }
-
-        DtoTelephone dtoTelephone = new DtoTelephone();
-
-        if ( source.getId() != null ) {
-            dtoTelephone.setId( source.getId() );
-        }
-        dtoTelephone.setLibelle( source.getLibelle() );
-        dtoTelephone.setNumero( source.getNumero() );
-
-        return dtoTelephone;
-    }
-
-    @Override
-    public Telephone duplicate(Telephone source) {
-        if ( source == null ) {
-            return null;
-        }
-
-        Telephone telephone = new Telephone();
-
-        telephone.setId( source.getId() );
-        telephone.setLibelle( source.getLibelle() );
-        telephone.setNumero( source.getNumero() );
-
-        return telephone;
-    }
-
-    @Override
-    public List<Telephone> duplicate(List<Telephone> source) {
-        if ( source == null ) {
-            return null;
-        }
-
-        List<Telephone> list = new ArrayList<Telephone>( source.size() );
-        for ( Telephone telephone : source ) {
-            list.add( duplicate( telephone ) );
-        }
-
-        return list;
-    }
-
-    protected List<Telephone> dtoTelephoneListToTelephoneList(List<DtoTelephone> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<Telephone> list1 = new ArrayList<Telephone>( list.size() );
-        for ( DtoTelephone dtoTelephone : list ) {
-            list1.add( map( dtoTelephone ) );
-        }
-
-        return list1;
-    }
-
-    protected List<DtoTelephone> telephoneListToDtoTelephoneList(List<Telephone> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<DtoTelephone> list1 = new ArrayList<DtoTelephone>( list.size() );
-        for ( Telephone telephone : list ) {
-            list1.add( map( telephone ) );
-        }
-
-        return list1;
+        return garde;
     }
 }

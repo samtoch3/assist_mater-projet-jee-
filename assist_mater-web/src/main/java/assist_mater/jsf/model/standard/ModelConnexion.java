@@ -9,10 +9,10 @@ import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-import assist_mater.commun.dto.DtoCompte;
+import assist_mater.commun.dto.DtoUser;
 import assist_mater.commun.service.IServiceConnexion;
-import assist_mater.jsf.data.Compte;
-import assist_mater.jsf.util.CompteActif;
+import assist_mater.jsf.data.Userr;
+
 import assist_mater.jsf.util.UtilJsf;
 
 
@@ -22,10 +22,10 @@ public class ModelConnexion {
 
 	// Champs
 
-	private Compte			courant;
+	private Userr			courant;
 
 	@Inject
-	private CompteActif		compteActif;
+	private Userr		UserrActif;
 	@Inject
 	private ModelInfo		modelInfo;
 	@EJB
@@ -34,9 +34,9 @@ public class ModelConnexion {
 
 	// Getters 
 	
-	public Compte getCourant() {
+	public Userr getCourant() {
 		if ( courant == null ) {
-			courant = new Compte();
+			courant = new Userr();
 		}
 		return courant;
 	}
@@ -46,22 +46,22 @@ public class ModelConnexion {
 	
 	public String connect() {
 	    
-	    DtoCompte dto = serviceConnexion.sessionUtilisateurOuvrir( courant.getPseudo(), courant.getMotDePasse() );
+	    DtoUser dto = serviceConnexion.sessionUtilisateurOuvrir( courant.getLogin(), courant.getPassword() );
 	    
 	    if ( dto != null ){
 	    	
 		    try {
 			    ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-				( (HttpServletRequest) ec.getRequest() ).login( courant.getPseudo(), courant.getMotDePasse() );
+				( (HttpServletRequest) ec.getRequest() ).login( courant.getLogin(), courant.getPassword() );
 			} catch (ServletException e) {
 				throw new RuntimeException( e );
 			}
 
-	        compteActif.setPseudo( dto.getPseudo() );
-	        compteActif.setRoles( dto.getRoles() );
+	        UserrActif.setLogin( dto.getLogin() );
+	        UserrActif.setRoles( dto.getRoles() );
 	        
 	    	modelInfo.setTitre( "Bienvenue" );
-	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + courant.getPseudo() +"'.");
+	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + courant.getFirstname() +"'.");
 		    return "info";
 
 	    } else {

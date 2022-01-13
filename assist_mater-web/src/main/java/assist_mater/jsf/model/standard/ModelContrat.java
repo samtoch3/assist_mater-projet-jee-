@@ -9,10 +9,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import assist_mater.commun.dto.DtoCompte;
+import assist_mater.commun.dto.DtoContrat;
 import assist_mater.commun.exception.ExceptionValidation;
-import assist_mater.commun.service.IServiceCompte;
-import assist_mater.jsf.data.Compte;
+import assist_mater.commun.service.IServiceContrat;
+import assist_mater.jsf.data.Contrat;
 import assist_mater.jsf.data.mapper.IMapper;
 import assist_mater.jsf.util.UtilJsf;
 
@@ -20,50 +20,50 @@ import assist_mater.jsf.util.UtilJsf;
 @SuppressWarnings("serial")
 @Named
 @ViewScoped
-public class ModelCompte implements Serializable {
+public class ModelContrat implements Serializable {
 
 	
 	// Champs
 	
-	private List<Compte>	liste;
+	private List<Contrat>		liste;
 	
-	private Compte			courant;
+	private Contrat			courant;
 	
 	@EJB
-	private IServiceCompte	serviceCompte;
+	private IServiceContrat	serviceContrat;
 	
 	@Inject
-	private IMapper			mapper;
+	private IMapper				mapper;
 
 	
 	// Getters 
 	
-	public List<Compte> getListe() {
+	public List<Contrat> getListe() {
 		if ( liste == null ) {
 			liste = new ArrayList<>();
-			for ( DtoCompte dto : serviceCompte.listerTout() ) {
+			for ( DtoContrat dto : serviceContrat.listerTout() ) {
 				liste.add( mapper.map( dto ) );
 			}
 		}
 		return liste;
 	}
-	
-		public Compte getCourant() {
-			if ( courant == null ) {
-				courant = new Compte();
-			}
-			return courant;
+
+	public Contrat getCourant() {
+		if ( courant == null ) {
+			courant = new Contrat();
 		}
+		return courant;
+	}
 	
 	
 	// Initialisaitons
 	
 	public String actualiserCourant() {
 		if ( courant != null ) {
-			DtoCompte dto = serviceCompte.retrouver( courant.getId() ); 
+			DtoContrat dto = serviceContrat.retrouver( courant.getId_contrat() ); 
 			if ( dto == null ) {
-				UtilJsf.messageError( "Le compte demandé n'existe pas" );
-				return "test/liste";
+				UtilJsf.messageError( "La catégorie demandée n'existe pas" );
+				return "liste";
 			} else {
 				courant = mapper.map( dto );
 			}
@@ -76,10 +76,10 @@ public class ModelCompte implements Serializable {
 	
 	public String validerMiseAJour() {
 		try {
-			if ( courant.getId() == null) {
-				serviceCompte.inserer( mapper.map(courant) );
+			if ( courant.getId_contrat() == null) {
+				serviceContrat.inserer( mapper.map(courant) );
 			} else {
-				serviceCompte.modifier( mapper.map(courant) );
+				serviceContrat.modifier( mapper.map(courant) );
 			}
 			UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
 			return "liste";
@@ -89,13 +89,13 @@ public class ModelCompte implements Serializable {
 		}
 	}
 	
-	public String supprimer( Compte item ) {
+	public String supprimer( Contrat item ) {
 		try {
-			serviceCompte.supprimer( item.getId() );
+			serviceContrat.supprimer( item.getId_contrat() );
 			liste.remove(item);
 			UtilJsf.messageInfo( "Suppression effectuée avec succès." );
 		} catch (ExceptionValidation e) {
-			UtilJsf.messageError( e ); 
+			UtilJsf.messageError( e );
 		}
 		return null;
 	}
