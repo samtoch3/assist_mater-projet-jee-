@@ -69,6 +69,22 @@ CREATE VIEW vue_userr_role AS
 	INNER JOIN role r ON u.id_user = r.id_user );
 
 	
+	
+--Insertions
+INSERT INTO User (id_user, lastname, firstname, login, password, adress, phone ) VALUES 
+  (1, 'MARTIN', 'Maëlys-Gaelle', 'martinma@3il.fr', 'martinma', '45 Rue Jean Courtois, 87000, Limoges', '06 55 44 33 22' ),
+  (2, 'PIERRE', 'Durand', 'pdurand@3il.fr', 'pdurand', '4 Rue Le Beau Palace, 87100, Limoges', '06 59 47 37 28' ),
+  (3, 'SALIM', 'Alim', 'salima@3il.fr', 'salima', '15 Rue de la Gare, 87015, Limoges', '06 56 41 32 20' );
+
+INSERT INTO role (id_user, role) VALUES
+	(1, 'NOUNOU'),
+	(2, 'PARENT'),
+	(3, 'PARENT');
+	
+INSERT INTO contrat (id_contrat, lastname, firstname, date_naiss, date_deb, date_fin, tarif_horaire, indemn_entretien, indemn_repas, id_user) VALUES
+	(1, 'KOBE', 'BRYAN', '03-11-2014', '13-01-2022', '13-01-2023', 5.50, 0.352, 2.5, 2);
+	
+	
 -- Index userr
 
 	

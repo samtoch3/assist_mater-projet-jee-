@@ -13,7 +13,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-01-13T15:39:31+0100",
+    date = "2022-01-13T15:49:26+0100",
     comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1300.v20210419-1022, environment: Java 15.0.2 (Oracle Corporation)"
 )
 @ApplicationScoped
@@ -27,17 +27,17 @@ public class IMapperImpl implements IMapper {
 
         Userr userr = new Userr();
 
-        userr.setAdress( source.getAdress() );
-        userr.setFirstname( source.getFirstname() );
         userr.setId_user( source.getId_user() );
         userr.setLastname( source.getLastname() );
+        userr.setFirstname( source.getFirstname() );
         userr.setLogin( source.getLogin() );
-        userr.setNumero( source.getNumero() );
         userr.setPassword( source.getPassword() );
+        userr.setAdress( source.getAdress() );
         List<String> list = source.getRoles();
         if ( list != null ) {
             userr.setRoles( new ArrayList<String>( list ) );
         }
+        userr.setNumero( source.getNumero() );
 
         return userr;
     }
@@ -73,17 +73,17 @@ public class IMapperImpl implements IMapper {
 
         Userr userr = new Userr();
 
-        userr.setAdress( source.getAdress() );
-        userr.setFirstname( source.getFirstname() );
         userr.setId_user( source.getId_user() );
         userr.setLastname( source.getLastname() );
+        userr.setFirstname( source.getFirstname() );
         userr.setLogin( source.getLogin() );
-        userr.setNumero( source.getNumero() );
         userr.setPassword( source.getPassword() );
+        userr.setAdress( source.getAdress() );
         List<String> list = source.getRoles();
         if ( list != null ) {
             userr.setRoles( new ArrayList<String>( list ) );
         }
+        userr.setNumero( source.getNumero() );
 
         return userr;
     }
@@ -94,13 +94,12 @@ public class IMapperImpl implements IMapper {
             return null;
         }
 
-        target.setAdress( source.getAdress() );
-        target.setFirstname( source.getFirstname() );
         target.setId_user( source.getId_user() );
         target.setLastname( source.getLastname() );
+        target.setFirstname( source.getFirstname() );
         target.setLogin( source.getLogin() );
-        target.setNumero( source.getNumero() );
         target.setPassword( source.getPassword() );
+        target.setAdress( source.getAdress() );
         if ( target.getRoles() != null ) {
             List<String> list = source.getRoles();
             if ( list != null ) {
@@ -117,6 +116,7 @@ public class IMapperImpl implements IMapper {
                 target.setRoles( new ArrayList<String>( list ) );
             }
         }
+        target.setNumero( source.getNumero() );
 
         return target;
     }
@@ -129,11 +129,11 @@ public class IMapperImpl implements IMapper {
 
         Contrat contrat = new Contrat();
 
+        contrat.setLastname( source.getLastname() );
+        contrat.setFirstname( source.getFirstname() );
+        contrat.setDate_naiss( source.getDate_naiss() );
         contrat.setDate_deb( source.getDate_deb() );
         contrat.setDate_fin( source.getDate_fin() );
-        contrat.setDate_naiss( source.getDate_naiss() );
-        contrat.setFirstname( source.getFirstname() );
-        contrat.setLastname( source.getLastname() );
         contrat.setTarif_horaire( source.getTarif_horaire() );
 
         return contrat;
@@ -168,13 +168,13 @@ public class IMapperImpl implements IMapper {
 
         Contrat contrat = new Contrat();
 
+        contrat.setLastname( source.getLastname() );
+        contrat.setFirstname( source.getFirstname() );
+        contrat.setDate_naiss( source.getDate_naiss() );
         contrat.setDate_deb( source.getDate_deb() );
         contrat.setDate_fin( source.getDate_fin() );
-        contrat.setDate_naiss( source.getDate_naiss() );
-        contrat.setFirstname( source.getFirstname() );
-        contrat.setLastname( source.getLastname() );
-        contrat.setParent( duplicate( source.getParent() ) );
         contrat.setTarif_horaire( source.getTarif_horaire() );
+        contrat.setParent( duplicate( source.getParent() ) );
 
         return contrat;
     }
@@ -187,10 +187,10 @@ public class IMapperImpl implements IMapper {
 
         Garde garde = new Garde();
 
+        garde.setId_garde( source.getId_garde() );
         garde.setDate_garde( source.getDate_garde() );
         garde.setHeure_deb( source.getHeure_deb() );
         garde.setHeure_fin( source.getHeure_fin() );
-        garde.setId_garde( source.getId_garde() );
         garde.setRepasPris( source.isRepasPris() );
 
         return garde;
@@ -221,10 +221,10 @@ public class IMapperImpl implements IMapper {
 
         Garde garde = new Garde();
 
+        garde.setId_garde( source.getId_garde() );
         garde.setDate_garde( source.getDate_garde() );
         garde.setHeure_deb( source.getHeure_deb() );
         garde.setHeure_fin( source.getHeure_fin() );
-        garde.setId_garde( source.getId_garde() );
         garde.setRepasPris( source.isRepasPris() );
 
         return garde;
