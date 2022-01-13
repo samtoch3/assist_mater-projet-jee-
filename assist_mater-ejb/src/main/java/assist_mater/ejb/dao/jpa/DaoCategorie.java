@@ -29,6 +29,9 @@ public class DaoCategorie implements IDaoCategorie {
 	
 	// Actions
 	
+	
+	
+	
 	@Override
 	public int inserer(Categorie categorie) {
 		em.persist(categorie);
