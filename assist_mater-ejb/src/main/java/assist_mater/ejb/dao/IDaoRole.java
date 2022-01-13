@@ -2,17 +2,17 @@ package assist_mater.ejb.dao;
 
 import java.util.List;
 
-import assist_mater.ejb.data.Compte;
+import assist_mater.ejb.data.User;
 
 
 public interface IDaoRole {
 
-	void insererPourCompte( Compte compte );
+	void insererPourUser( User user );
 
-	void modifierPourCompte( Compte compte );
+	void modifierPourUser( User user );
 
-	void supprimerPourCompte( int idCompte );
+	void supprimerPourUser( int idUser );
 
-	List<String> listerPourCompte( Compte compte );
+	List<String> listerPourUser( User user );
 
 }

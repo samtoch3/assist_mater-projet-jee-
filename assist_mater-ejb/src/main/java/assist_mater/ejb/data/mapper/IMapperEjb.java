@@ -10,9 +10,9 @@ import assist_mater.commun.dto.DtoCategorie;
 import assist_mater.commun.dto.DtoCompte;
 import assist_mater.commun.dto.DtoPersonne;
 import assist_mater.commun.dto.DtoTelephone;
-import assist_mater.ejb.data.Categorie;
-import assist_mater.ejb.data.Compte;
-import assist_mater.ejb.data.Personne;
+import assist_mater.ejb.data.Garde;
+import assist_mater.ejb.data.User;
+import assist_mater.ejb.data.Contrat;
 import assist_mater.ejb.data.Telephone;
 
  
@@ -24,27 +24,27 @@ public interface IMapperEjb {
 	
 	// Compte
 	
-	Compte map( DtoCompte source );
+	User map( DtoCompte source );
 	
-	DtoCompte map( Compte source );
+	DtoCompte map( User source );
 
 	
 	// Categorie
 	
-	Categorie map( DtoCategorie source );
+	Garde map( DtoCategorie source );
 	
-	DtoCategorie map( Categorie source );
+	DtoCategorie map( Garde source );
 
 	
 	// Personne
 	
-	Personne map( DtoPersonne source );
+	Contrat map( DtoPersonne source );
 	
-	DtoPersonne map( Personne source );
+	DtoPersonne map( Contrat source );
 
 	@Mapping( target="categorie", ignore = true )
 	@Mapping( target="telephones", ignore = true )
-	DtoPersonne mapMinimal( Personne source );
+	DtoPersonne mapMinimal( Contrat source );
 	
 	
 	// Telephone
@@ -58,7 +58,7 @@ public interface IMapperEjb {
 	// Méthodes auxiliaires
 	
     @AfterMapping
-    public default void addBackReference(@MappingTarget Personne target) {
+    public default void addBackReference(@MappingTarget Contrat target) {
         for (Telephone telephone : target.getTelephones() ) {
         	telephone.setPersonne( target );
         }

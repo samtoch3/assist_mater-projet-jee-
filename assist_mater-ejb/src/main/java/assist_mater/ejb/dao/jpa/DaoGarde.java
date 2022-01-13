@@ -11,14 +11,14 @@ import javax.ejb.TransactionAttribute;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import assist_mater.ejb.dao.IDaoCategorie;
-import assist_mater.ejb.data.Categorie;
+import assist_mater.ejb.dao.IDaoGarde;
+import assist_mater.ejb.data.Garde;
 
 
 @Stateless
 @Local
 @TransactionAttribute( MANDATORY )
-public class DaoCategorie implements IDaoCategorie {
+public class DaoGarde implements IDaoGarde {
 
 	
 	// Champs
@@ -30,37 +30,35 @@ public class DaoCategorie implements IDaoCategorie {
 	// Actions
 	
 	
-	
-	
 	@Override
-	public int inserer(Categorie categorie) {
-		em.persist(categorie);
+	public int inserer(Garde garde) {
+		em.persist(garde);
 		em.flush();
-		return categorie.getId();
+		return garde.getId_garde();
 	}
 
 	@Override
-	public void modifier(Categorie categorie) {
-		em.merge( categorie );
+	public void modifier(Garde garde) {
+		em.merge(garde);
 	}
 
 	@Override
-	public void supprimer(int idCategorie) {
-		em.remove( retrouver(idCategorie) );
-	}
-
-	@Override
-	@TransactionAttribute( NOT_SUPPORTED )
-	public Categorie retrouver(int idCategorie) {
-		return em.find( Categorie.class, idCategorie );
+	public void supprimer(int idGarde) {
+		em.remove( retrouver(idGarde) );
 	}
 
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
-	public List<Categorie> listerTout() {
+	public Garde retrouver(int idGarde) {
+		return em.find( Garde.class, idGarde );
+	}
+
+	@Override
+	@TransactionAttribute( NOT_SUPPORTED )
+	public List<Garde> listerTout() {
 		em.clear();
-		var jpql = "SELECT c FROM Categorie c ORDER BY c.libelle";
-		var query = em.createQuery( jpql, Categorie.class );
+		var jpql = "SELECT g FROM Garde g ORDER BY g.date_garde";
+		var query = em.createQuery( jpql, Garde.class );
 		return query.getResultList();
 	}
 	

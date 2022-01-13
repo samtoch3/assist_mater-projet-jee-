@@ -17,20 +17,20 @@ import assist_mater.commun.dto.DtoPersonne;
 import assist_mater.commun.dto.DtoTelephone;
 import assist_mater.commun.exception.ExceptionValidation;
 import assist_mater.commun.service.IServicePersonne;
-import assist_mater.ejb.dao.IDaoPersonne;
-import assist_mater.ejb.data.Personne;
+import assist_mater.ejb.dao.IDaoContrat;
+import assist_mater.ejb.data.Contrat;
 import assist_mater.ejb.data.mapper.IMapperEjb;
 
 @Stateless
 @Remote
 @RolesAllowed({ ADMINISTRATEUR, UTILISATEUR })
-public class ServicePersonne implements IServicePersonne {
+public class ServiceContrat implements IServicePersonne {
 
 	// Champs
 	@Inject
 	private IMapperEjb mapper;
 	@Inject
-	private IDaoPersonne daoPersonne;
+	private IDaoContrat daoPersonne;
 
 	// Actions
 
@@ -55,7 +55,7 @@ public class ServicePersonne implements IServicePersonne {
 	@Override
 	@TransactionAttribute(NOT_SUPPORTED)
 	public DtoPersonne retrouver(int idPersonne) {
-		Personne personne = daoPersonne.retrouver(idPersonne);
+		Contrat personne = daoPersonne.retrouver(idPersonne);
 		return mapper.map(personne);
 
 	}
@@ -64,7 +64,7 @@ public class ServicePersonne implements IServicePersonne {
 	@TransactionAttribute(NOT_SUPPORTED)
 	public List<DtoPersonne> listerTout() {
 		List<DtoPersonne> liste = new ArrayList<>();
-		for (Personne personne : daoPersonne.listerTout()) {
+		for (Contrat personne : daoPersonne.listerTout()) {
 			liste.add( mapper.mapMinimal(personne) );
 		}
 		return liste;

@@ -15,20 +15,20 @@ import javax.inject.Inject;
 import assist_mater.commun.dto.DtoCompte;
 import assist_mater.commun.exception.ExceptionValidation;
 import assist_mater.commun.service.IServiceCompte;
-import assist_mater.ejb.dao.IDaoCompte;
-import assist_mater.ejb.data.Compte;
+import assist_mater.ejb.dao.IDaoUser;
+import assist_mater.ejb.data.User;
 import assist_mater.ejb.data.mapper.IMapperEjb;
 
 @Stateless
 @Remote
 @RolesAllowed(ADMINISTRATEUR)
-public class ServiceCompte implements IServiceCompte {
+public class ServiceUser implements IServiceCompte {
 
 	// Champs
 	@Inject
 	private IMapperEjb mapper;
 	@Inject
-	private IDaoCompte daoCompte;
+	private IDaoUser daoCompte;
 
 	// Actions
 
@@ -60,7 +60,7 @@ public class ServiceCompte implements IServiceCompte {
 	@TransactionAttribute(NOT_SUPPORTED)
 	public List<DtoCompte> listerTout() {
 		List<DtoCompte> liste = new ArrayList<>();
-		for (Compte compte : daoCompte.listerTout()) {
+		for (User compte : daoCompte.listerTout()) {
 			liste.add(mapper.map(compte));
 		}
 		return liste;

@@ -16,23 +16,23 @@ import javax.inject.Inject;
 import assist_mater.commun.dto.DtoCategorie;
 import assist_mater.commun.exception.ExceptionValidation;
 import assist_mater.commun.service.IServiceCategorie;
-import assist_mater.ejb.dao.IDaoCategorie;
-import assist_mater.ejb.dao.IDaoPersonne;
-import assist_mater.ejb.data.Categorie;
+import assist_mater.ejb.dao.IDaoGarde;
+import assist_mater.ejb.dao.IDaoContrat;
+import assist_mater.ejb.data.Garde;
 import assist_mater.ejb.data.mapper.IMapperEjb;
 
 @Stateless
 @Remote
 @RolesAllowed(ADMINISTRATEUR)
-public class ServiceCategorie implements IServiceCategorie {
+public class ServiceGarde implements IServiceCategorie {
 
 	// Champs
 	@Inject
 	private IMapperEjb mapper;
 	@Inject
-	private IDaoCategorie daoCategorie;
+	private IDaoGarde daoCategorie;
 	@Inject
-	private IDaoPersonne daoPersonne;
+	private IDaoContrat daoPersonne;
 
 	// Actions
 
@@ -69,7 +69,7 @@ public class ServiceCategorie implements IServiceCategorie {
 	@TransactionAttribute(NOT_SUPPORTED)
 	public List<DtoCategorie> listerTout() {
 		List<DtoCategorie> liste = new ArrayList<>();
-		for (Categorie categorie : daoCategorie.listerTout()) {
+		for (Garde categorie : daoCategorie.listerTout()) {
 			liste.add(mapper.map(categorie));
 		}
 		return liste;

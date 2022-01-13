@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 import assist_mater.commun.dto.DtoCompte;
 import assist_mater.commun.service.IServiceConnexion;
-import assist_mater.ejb.dao.IDaoCompte;
+import assist_mater.ejb.dao.IDaoUser;
 import assist_mater.ejb.data.mapper.IMapperEjb;
 
 @Stateless
@@ -20,7 +20,7 @@ public class ServiceConnexion implements IServiceConnexion {
 	@Inject
 	private IMapperEjb mapper;
 	@Inject
-	private IDaoCompte daoCompte;
+	private IDaoUser daoCompte;
 
 	// Actions
 

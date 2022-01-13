@@ -2,10 +2,9 @@
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="assist_mater" transaction-type="JTA">
 		<jta-data-source>java:/jdbc/assist_mater</jta-data-source>
-		<class>assist_mater.ejb.data.Categorie</class>
-		<class>assist_mater.ejb.data.Compte</class>
-		<class>assist_mater.ejb.data.Personne</class>
-		<class>assist_mater.ejb.data.Telephone</class>
+		<class>assist_mater.ejb.data.Garde</class>
+		<class>assist_mater.ejb.data.User</class>
+		<class>assist_mater.ejb.data.Contrat</class>
 		<properties>
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
