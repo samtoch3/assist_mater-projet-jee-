@@ -6,19 +6,19 @@
   <navigation-case>
    <from-outcome>connexion</from-outcome>
    <to-view-id>/connexion.xhtml</to-view-id>
-   <redirect />
+   <redirect/>
   </navigation-case>
   <navigation-case>
-   <from-outcome>catégories</from-outcome>
-   <to-view-id>/pages/admin/categorie/liste.xhtml</to-view-id>
+   <from-outcome>contrat</from-outcome>
+   <to-view-id>/pages/nounou/contrat/liste.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>comptes</from-outcome>
-   <to-view-id>/pages/admin/compte/liste.xhtml</to-view-id>
+   <from-outcome>garde</from-outcome>
+   <to-view-id>/pages/nounou/garde/liste.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>personnes</from-outcome>
-   <to-view-id>/pages/user/personne/liste.xhtml</to-view-id>
+   <to-view-id>/pages/parent/personne/liste.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>info</from-outcome>

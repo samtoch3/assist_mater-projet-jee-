@@ -20,7 +20,7 @@ import assist_mater.jsf.util.CompteActif;
 				DispatcherType.FORWARD
 		}
 					, 
-		urlPatterns = { "/pages/admin/*"})
+		urlPatterns = { "/pages/nounou/*"})
 public class FilterNounou implements Filter {
 
 	

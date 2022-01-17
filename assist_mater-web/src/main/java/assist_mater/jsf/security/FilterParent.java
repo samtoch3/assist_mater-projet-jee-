@@ -19,7 +19,7 @@ import assist_mater.jsf.util.UtilJsf;
 				DispatcherType.REQUEST, 
 				DispatcherType.FORWARD
 		}
-					, urlPatterns = { "/pages/user/*" })
+					, urlPatterns = { "/pages/parent/*" })
 public class FilterParent implements Filter {
 
 	
