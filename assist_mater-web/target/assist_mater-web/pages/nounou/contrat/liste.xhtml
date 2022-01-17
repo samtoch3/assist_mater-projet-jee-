@@ -5,28 +5,35 @@
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:ui="http://java.sun.com/jsf/facelets">>
 
-     <ui:define name="titre">Liste des catégories</ui:define>
+     <ui:define name="titre">Liste des contrats</ui:define>
 
     <ui:define name="contenu">
 
 	<h:form>
 
 		<h:dataTable styleClass="liste" 
-			value="#{modelCategorie.liste}" var="item" 
-			rowClasses="impair, pair" columnClasses="center,left,center"
+			value="#{modelContrat.liste}" var="item" 
+			rowClasses="impair, pair" columnClasses="center,left,center,center"
 		>
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Id" />
 				</f:facet>
-				#{item.id}
+				#{item.id_contrat}
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Libellé" />
+					<h:outputText value="Nom" />
 				</f:facet>
-				#{item.libelle}
+				#{item.lastname}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Prenom" />
+				</f:facet>
+				#{item.firstname}
 			</h:column>
 			
 			<h:column>
@@ -34,7 +41,7 @@
 					<h:outputText value="Actions" />
 				</f:facet>
 				<h:button
-					outcome="formulaire?id=#{item.id}"
+					outcome="formulaire?id=#{item.id_contrat}"
 					image="#{ resource['images:modifier.png'] }"
 					title="Modifier" 
 					styleClass="image-action"
