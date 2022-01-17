@@ -17,8 +17,8 @@
    <to-view-id>/pages/Nounou/garde/liste.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
-   <from-outcome>personnes</from-outcome>
-   <to-view-id>/pages/user/personne/liste.xhtml</to-view-id>
+   <from-outcome>parent</from-outcome>
+   <to-view-id>/pages/Parent/parent/liste.xhtml</to-view-id>
   </navigation-case>
   <navigation-case>
    <from-outcome>info</from-outcome>
