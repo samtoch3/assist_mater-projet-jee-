@@ -19,8 +19,8 @@
 	<h:form rendered="#{compteActif.loggedIn}">
 		<h:link outcome="personnes" value="Personnes" rendered="#{compteActif.utilisateur }" />
 		<h:panelGroup rendered="#{compteActif.admininstrateur}">
-			<h:link outcome="catégories" value="Catégories"  />
-			<h:link outcome="comptes" value="Comptes"  />
+			<h:link outcome="catégories" value="Garde"  />
+			<h:link outcome="comptes" value="Contrat"  />
 		</h:panelGroup>
 		<h:commandLink action="#{compteActif.disconnect()}" value="Déconnexion"  />
 	</h:form>

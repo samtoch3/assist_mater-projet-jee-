@@ -13,15 +13,18 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 import assist_mater.jsf.util.CompteActif;
-import assist_mater.jsf.util.UtilJsf;
 
-@WebFilter(dispatcherTypes = {
+@WebFilter(
+		dispatcherTypes = {
 				DispatcherType.REQUEST, 
 				DispatcherType.FORWARD
 		}
-					, urlPatterns = { "/pages/user/*" })
-public class FilterUser implements Filter {
+					, 
+		urlPatterns = { "/pages/admin/*"})
+public class FilterNounou implements Filter {
 
+	
+	// Champs
 	
 	@Inject
 	private CompteActif		compteActif;
@@ -33,15 +36,13 @@ public class FilterUser implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-		if ( compteActif.isUtilisateur() ) {
+		if ( compteActif.isAdmininstrateur() ) {
 	        // si OK, on traite l'URL normalement
 	        chain.doFilter(request, response);
 	    } else {
 	        // sinon on affiche la page d'erreur avec un message
-//		    request.setAttribute( "javax.servlet.error.message", "Vous n'êtes pas autorisé à effectuer l'action demandée." );
-//	        request.getRequestDispatcher( "/erreur.xhtml" ).forward(request, response);
-			request.setAttribute( UtilJsf.MSG_ERROR, "Autorisation insuffisante."  );
-			request.getRequestDispatcher( "/pages/info.xhtml" ).forward(request, response);
+		    request.setAttribute( "javax.servlet.error.message", "Vous n'êtes pas autorisé à effectuer l'action demandée." );
+	        request.getRequestDispatcher( "/erreur.xhtml" ).forward(request, response);
 	    }
 	}
 

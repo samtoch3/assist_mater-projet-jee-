@@ -54,7 +54,6 @@ public class User implements Serializable {
 
 	public User(Integer id_user, String lastname, String firstname, String login, String password, String adress,String numero,
 			List<String> roles) {
-		super();
 		this.id_user = id_user;
 		this.lastname = lastname;
 		this.firstname = firstname;

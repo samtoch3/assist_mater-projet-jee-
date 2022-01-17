@@ -16,7 +16,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-01-13T20:40:45+0100",
+    date = "2022-01-15T10:59:43+0100",
     comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1300.v20210419-1022, environment: Java 15.0.2 (Oracle Corporation)"
 )
 @ApplicationScoped
@@ -30,14 +30,14 @@ public class IMapperEjbImpl implements IMapperEjb {
 
         User user = new User();
 
-        user.setAdress( source.getAdress() );
-        user.setFirstname( source.getFirstname() );
         if ( source.getId_user() != null ) {
             user.setId_user( source.getId_user() );
         }
         user.setLastname( source.getLastname() );
+        user.setFirstname( source.getFirstname() );
         user.setLogin( source.getLogin() );
         user.setPassword( source.getPassword() );
+        user.setAdress( source.getAdress() );
         List<String> list = source.getRoles();
         if ( list != null ) {
             user.setRoles( new ArrayList<String>( list ) );
@@ -76,12 +76,12 @@ public class IMapperEjbImpl implements IMapperEjb {
 
         Garde garde = new Garde();
 
-        garde.setDate_garde( source.getDate_garde() );
-        garde.setHeure_deb( source.getHeure_deb() );
-        garde.setHeure_fin( source.getHeure_fin() );
         if ( source.getId_garde() != null ) {
             garde.setId_garde( source.getId_garde() );
         }
+        garde.setDate_garde( source.getDate_garde() );
+        garde.setHeure_deb( source.getHeure_deb() );
+        garde.setHeure_fin( source.getHeure_fin() );
         garde.setRepasPris( source.isRepasPris() );
 
         return garde;
@@ -118,22 +118,22 @@ public class IMapperEjbImpl implements IMapperEjb {
 
         Contrat contrat = new Contrat();
 
-        contrat.setDate_deb( source.getDate_deb() );
-        contrat.setDate_fin( source.getDate_fin() );
-        contrat.setDate_naiss( source.getDate_naiss() );
-        contrat.setFirstname( source.getFirstname() );
         if ( source.getId_contrat() != null ) {
             contrat.setId_contrat( source.getId_contrat() );
         }
-        if ( source.getIndemn_entretien() != null ) {
-            contrat.setIndemn_entretien( source.getIndemn_entretien().floatValue() );
+        contrat.setLastname( source.getLastname() );
+        contrat.setFirstname( source.getFirstname() );
+        contrat.setDate_naiss( source.getDate_naiss() );
+        contrat.setDate_deb( source.getDate_deb() );
+        contrat.setDate_fin( source.getDate_fin() );
+        if ( source.getTarif_horaire() != null ) {
+            contrat.setTarif_horaire( source.getTarif_horaire().floatValue() );
         }
         if ( source.getIndemn_repas() != null ) {
             contrat.setIndemn_repas( source.getIndemn_repas().floatValue() );
         }
-        contrat.setLastname( source.getLastname() );
-        if ( source.getTarif_horaire() != null ) {
-            contrat.setTarif_horaire( source.getTarif_horaire().floatValue() );
+        if ( source.getIndemn_entretien() != null ) {
+            contrat.setIndemn_entretien( source.getIndemn_entretien().floatValue() );
         }
 
         return contrat;

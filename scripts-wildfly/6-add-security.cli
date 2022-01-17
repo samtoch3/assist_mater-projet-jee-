@@ -1,6 +1,6 @@
 /subsystem=elytron/jdbc-realm=realm-assist_mater:add( \
 	principal-query=[{ \
-		sql="SELECT c.MotDePasse, r.role FROM compte c INNER JOIN role r ON c.IdCompte = r.IdCompte WHERE c.Pseudo = ?", \
+		sql="SELECT u.password, r.role FROM userr u INNER JOIN role r ON u.id_user = r.id_user WHERE u.login = ?", \
 		data-source=assist_mater, \
 		clear-password-mapper={password-index=1}, \
 		attribute-mapping=[{index=2,to=groups}] \

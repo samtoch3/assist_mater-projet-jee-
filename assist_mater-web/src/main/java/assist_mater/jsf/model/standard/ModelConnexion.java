@@ -60,12 +60,13 @@ public class ModelConnexion {
 	        UserrActif.setLogin( dto.getLogin() );
 	        UserrActif.setRoles( dto.getRoles() );
 	        
-	    	modelInfo.setTitre( "Bienvenue" );
-	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + courant.getFirstname() +"'.");
+	    	modelInfo.setTitre( "Bienvenue sur ChildCare App" );
+	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + courant.getLogin() +"'.");
 		    return "info";
 
 	    } else {
 	        UtilJsf.messageError( "Pseudo ou mot de passe invalide." );
+	        
 	    	return null;
 	    }
 	}	
