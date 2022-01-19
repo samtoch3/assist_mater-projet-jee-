@@ -3,9 +3,14 @@
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
-     xmlns:ui="http://java.sun.com/jsf/facelets">>
+     xmlns:ui="http://java.sun.com/jsf/facelets">
+     
+     <f:metadata>
+     			<f:viewParam name="id" value="#{modelUser.courant.id_user}"></f:viewParam>
+     			<f:viewAction action = "#{modelUser.actualiserCourant()}"></f:viewAction>
+     </f:metadata>
 
-     <ui:define name="titre">Liste des contrats</ui:define>
+     <ui:define name="titre">Liste des enfants</ui:define>
 
     <ui:define name="contenu">
 
@@ -31,22 +36,6 @@
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Date de naissance de l'enfant" />
-				</f:facet>
-				#{item.date_naiss}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Nom du parent" />
-				</f:facet>
-				#{item.parent} 
-			</h:column>	
-			
-			
-			
-			<h:column>
-				<f:facet name="header">
 					<h:outputText value="Date de début" />
 				</f:facet>
 				#{item.date_deb}
@@ -62,7 +51,6 @@
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="tarif horaire" />
-					<!-- <f:convertNumber pattern="#,##0.00 €"/> -->
 				</f:facet>
 				#{item.tarif_horaire}
 			</h:column>	
@@ -70,7 +58,6 @@
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="indemnité entretien" />
-<!-- 					<f:convertNumber pattern="#,##0.00 €"/> -->
 				</f:facet>
 				#{item.indemn_entretien}
 			</h:column>	
@@ -78,14 +65,9 @@
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="indemnité repas" />
-					<!-- <f:convertNumber pattern="#,##0.00 €"/> -->
 				</f:facet>
 				#{item.indemn_repas}
 			</h:column>	
-			
-			
-			
-			
 			
 			
 			
@@ -94,12 +76,7 @@
 				<f:facet name="header">
 					<h:outputText value="Actions" />
 				</f:facet>
-				<h:button
-					outcome="formulaire?id=#{item.id_contrat}"
-					image="#{ resource['images:modifier.png'] }"
-					title="Modifier" 
-					styleClass="image-action"
-				/>
+				
 				
 				<h:button
 					outcome="formulaire?id=#{item.id_contrat}"

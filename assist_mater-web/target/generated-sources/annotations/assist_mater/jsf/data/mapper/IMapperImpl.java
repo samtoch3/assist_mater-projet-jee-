@@ -13,7 +13,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-01-17T12:09:54+0100",
+    date = "2022-01-17T15:14:12+0100",
     comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 1.3.1300.v20210419-1022, environment: Java 15.0.2 (Oracle Corporation)"
 )
 @ApplicationScoped
@@ -129,12 +129,15 @@ public class IMapperImpl implements IMapper {
 
         Contrat contrat = new Contrat();
 
+        contrat.setId_contrat( source.getId_contrat() );
         contrat.setLastname( source.getLastname() );
         contrat.setFirstname( source.getFirstname() );
         contrat.setDate_naiss( source.getDate_naiss() );
         contrat.setDate_deb( source.getDate_deb() );
         contrat.setDate_fin( source.getDate_fin() );
         contrat.setTarif_horaire( source.getTarif_horaire() );
+        contrat.setIndemn_entretien( source.getIndemn_entretien() );
+        contrat.setIndemn_repas( source.getIndemn_repas() );
 
         return contrat;
     }
@@ -154,6 +157,8 @@ public class IMapperImpl implements IMapper {
         if ( source.getId_contrat() != null ) {
             dtoContrat.setId_contrat( source.getId_contrat() );
         }
+        dtoContrat.setIndemn_entretien( source.getIndemn_entretien() );
+        dtoContrat.setIndemn_repas( source.getIndemn_repas() );
         dtoContrat.setLastname( source.getLastname() );
         dtoContrat.setTarif_horaire( source.getTarif_horaire() );
 
@@ -168,6 +173,7 @@ public class IMapperImpl implements IMapper {
 
         Contrat contrat = new Contrat();
 
+        contrat.setId_contrat( source.getId_contrat() );
         contrat.setLastname( source.getLastname() );
         contrat.setFirstname( source.getFirstname() );
         contrat.setDate_naiss( source.getDate_naiss() );
@@ -175,6 +181,8 @@ public class IMapperImpl implements IMapper {
         contrat.setDate_fin( source.getDate_fin() );
         contrat.setTarif_horaire( source.getTarif_horaire() );
         contrat.setParent( duplicate( source.getParent() ) );
+        contrat.setIndemn_entretien( source.getIndemn_entretien() );
+        contrat.setIndemn_repas( source.getIndemn_repas() );
 
         return contrat;
     }

@@ -60,7 +60,7 @@ public class DaoContrat implements IDaoContrat {
 	@TransactionAttribute( NOT_SUPPORTED )
 	public List<Contrat> listerTout() {
 		em.clear();
-		var jpql = "SELECT c FROM Contrat c ORDER BY c.lastname, c.firstname";
+		var jpql = "SELECT c FROM Contrat c ORDER BY c.id_contrat " ;
 		var query = em.createQuery( jpql, Contrat.class );
 		return query.getResultList();
 	}

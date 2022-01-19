@@ -17,7 +17,7 @@
 <div id="header">
 	<h:outputText value="&nbsp;" rendered="#{not compteActif.loggedIn}" />
 	<h:form rendered="#{compteActif.loggedIn}">
-		<h:link outcome="personnes" value="Personnes" rendered="#{compteActif.utilisateur }" />
+		<h:link outcome="parent" value="Liste de vos contrats" rendered="#{compteActif.utilisateur }" />
 		<h:panelGroup rendered="#{compteActif.admininstrateur}">
 			<h:link outcome="contrat" value="Contrat"  />
 			<h:link outcome="garde" value="Garde"  />

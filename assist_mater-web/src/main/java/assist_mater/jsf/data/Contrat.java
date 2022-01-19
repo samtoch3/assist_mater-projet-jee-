@@ -77,13 +77,16 @@ public class Contrat implements Serializable {
 
 	// Getters & setters
 
+	
 	public Integer getId_contrat() {
 		return id_contrat;
 	}
-
-	public void setId_user(Integer id_contrat) {
+	
+	public void setId_contrat(Integer id_contrat) {
 		this.id_contrat = id_contrat;
 	}
+
+	
 
 	public String getLastname() {
 		return lastname;
@@ -140,12 +143,30 @@ public class Contrat implements Serializable {
 	public void setParent(User parent) {
 		this.parent = parent;
 	}
+	public BigDecimal getIndemn_entretien() {
+		return indemn_entretien;
+	}
+
+	public void setIndemn_entretien(BigDecimal indemn_entretien) {
+		this.indemn_entretien = indemn_entretien;
+	}
+
+	public BigDecimal getIndemn_repas() {
+		return indemn_repas;
+	}
+
+	public void setIndemn_repas(BigDecimal indemn_repas) {
+		this.indemn_repas = indemn_repas;
+	}
+
 	
+
 
 	// toString()
 
 	
 
+	
 	@Override
 	public String toString() {
 		return lastname + " "+ firstname;

@@ -62,7 +62,7 @@ public class ModelContrat implements Serializable {
 		if ( courant != null ) {
 			DtoContrat dto = serviceContrat.retrouver( courant.getId_contrat() ); 
 			if ( dto == null ) {
-				UtilJsf.messageError( "Le contrat demandée n'existe pas" );
+				UtilJsf.messageError( "Le contrat demandé n'existe pas" );
 				return "liste";
 			} else {
 				courant = mapper.map( dto );
